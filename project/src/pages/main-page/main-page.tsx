@@ -1,4 +1,3 @@
-
 function MainPageHeader(): JSX.Element {
   return (
     <header className="header">
@@ -29,9 +28,6 @@ function MainPageHeader(): JSX.Element {
     </header>);
 }
 
-type MainPageProps = {
-  errorsCount: number;
-
 function MainPageArticle(): JSX.Element {
     return (
   <article className="cities__card place-card">
@@ -60,6 +56,9 @@ function MainPageArticle(): JSX.Element {
   </div>
 </article>);
 }
+
+type MainPageProps = {
+  rentalOffers: number;
 
 function MainPageMain({rentalOffers}: MainPageProps): JSX.Element {
   return (
@@ -165,4 +164,5 @@ function MainPageMain({rentalOffers}: MainPageProps): JSX.Element {
     </main>
 
 export default MainPageHeader;
-  export default MainPageMain;
+export default MainPageMain;
+
