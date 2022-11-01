@@ -1,11 +1,12 @@
-import MainPageMain from '../../pages/main-page/main-page';
+import MainPage from '../../pages/main-page/main-page';
 
-type: AppScreenProps = {
+type AppProps = {
   rentalOffers: number;
+}
 
-function App({rentalOffers}: AppScreenProps): JSX.Element {
+function App({rentalOffers}: AppProps): JSX.Element {
   return (
-    <MainPageMain {rentalOffers}/>
+    <MainPage rentalOffers={rentalOffers}/>
   );
 }
 

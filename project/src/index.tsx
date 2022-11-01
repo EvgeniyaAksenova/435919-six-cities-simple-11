@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-     rentalOffers = {Setting.RentalOffers}
+      rentalOffers={Setting.RentalOffers}
     />
   </React.StrictMode>,
 );
