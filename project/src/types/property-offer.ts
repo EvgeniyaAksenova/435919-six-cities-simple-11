@@ -1,10 +1,11 @@
 export type PropertyOffer= {
     city: {
-    location: {
-    latitude: number
-    longitude: number
-    }
-    name: string
+      location: {
+        latitude: number
+        longitude: number
+        zoom: number
+      }
+      name: string
     }
     id: number;
     galleryUrl: string;
