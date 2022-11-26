@@ -2,9 +2,12 @@ import { useState } from 'react';
 
 
 export function PropertyForm(): JSX.Element {
-  const [formData, setFormData] = useState([false, false, false, false, false, '']);
+  const [formData, setFormData] = useState({
+    rating: 0,
+    review: '',
+  });
 
-  const fieldChangeHandle = (evt) => {
+  const fieldChangeHandle = (evt: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const {name, value} = evt.target;
     setFormData({...formData, [name]: value});
   };

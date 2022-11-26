@@ -1,6 +1,13 @@
 export type PropertyOffer= {
+    city: {
+    location: {
+    latitude: number
+    longitude: number
+    }
+    name: string
+    }
     id: number;
-    galleryUrl: [string, string, string, string, string, string];
+    galleryUrl: string;
     isPremium: boolean;
     title: string;
     rating: number;
@@ -23,7 +30,7 @@ export type PropertyOffer= {
       isFridge: boolean;
     };
     host: {
-      avatarUrl: [string];
+      avatarUrl: string;
       name: string;
       isPro: boolean;
       description: string;

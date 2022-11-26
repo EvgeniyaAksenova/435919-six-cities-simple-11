@@ -1,37 +1,40 @@
 import { PropertyForm } from './property-form';
-import {PropertyOffer} from '../../types/property-offer';
-import {PropertyReview} from '../../types/property-review';
+import { PropertyCardReview } from './property-review';
+import { PropertyOffer } from '../../types/property-offer';
+import { PropertyReview } from '../../types/property-review';
 
+type ProperyImageProps = {
+  galleryUrl: string;
+}
 
-export function PropertyImage(): JSX.Element {
+export function PropertyImage(props: ProperyImageProps): JSX.Element {
   return (
     <div className="property__image-wrapper">
-      <img className="property__image" src="img/room.jpg" alt="Photo studio" />
+      <img className="property__image" src={props.galleryUrl} alt="Photo studio" />
     </div>
   );
 }
 
-type PropertyOfferProps = {
-    offer:PropertyOffer;
+
+export type PropertyOfferProps = {
+  offer: PropertyOffer;
+  reviews: PropertyReview [];
 };
 
 export function PropertyCard(props: PropertyOfferProps): JSX.Element {
-  const {offer} = props;
-  const {galleryUrl, isPremium, title, rating, features, price, inside, host} = offer;
+  const { offer, reviews } = props;
+  const { galleryUrl, isPremium, title, rating, features, price, inside, host } = offer;
+
 
   return (
     <section className="property">
       <div className="property__gallery-container container">
         <div className="property__gallery">
-          <PropertyImage />
-          <PropertyImage />
-          <PropertyImage />
-          <PropertyImage />
+          <PropertyImage galleryUrl={galleryUrl} />
         </div>
       </div>
 
       <div className="property__container container">
-
         <div className="property__wrapper">
           <div className="property__mark">
             <span>{isPremium}</span>
@@ -105,7 +108,7 @@ export function PropertyCard(props: PropertyOfferProps): JSX.Element {
             <h2 className="property__host-title">Meet the host</h2>
             <div className="property__host-user user">
               <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                <img className="property__avatar user__avatar" src={host.avatarUrl} width="74" height="74" alt="Host avatar" />
               </div>
               <span className="property__user-name">
                 {host.name}
@@ -126,30 +129,17 @@ export function PropertyCard(props: PropertyOfferProps): JSX.Element {
 
           <section className="property__reviews reviews">
             <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-            <ul className="reviews__list">
-              <li className="reviews__item">
-                <div className="reviews__user user">
-                  <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                    <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
-                  </div>
-                  <span className="reviews__user-name">
-                    Max
-                  </span>
-                </div>
-                <div className="reviews__info">
-                  <div className="reviews__rating rating">
-                    <div className="reviews__stars rating__stars">
-                      <span style={{ width: '80%' }}></span>
-                      <span className="visually-hidden">Rating</span>
-                    </div>
-                  </div>
-                  <p className="reviews__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <time className="reviews__time" dateTime={'2019-04-24'}>April 2019</time>
-                </div>
-              </li>
-            </ul>
+            {reviews.map((review) => {
+                return (
+                  <PropertyCardReview
+                  avatarUrl={review.avatarUrl}
+                  userName={review.userName}
+                  rating={review.rating}
+                  textReview={review.textReview}
+                  dateTime = {review.dateTime}
+                  key={review.id} />
+                )
+                });}
             <PropertyForm />
           </section>
         </div>

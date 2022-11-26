@@ -7,6 +7,6 @@ export const reviews: PropertyReview[] = [
     userName: 'Max',
     rating: '',
     textReview: ' A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
-    dateTime: 'April 2019',
+    dateTime: '2019-01-04',
   }
 ];

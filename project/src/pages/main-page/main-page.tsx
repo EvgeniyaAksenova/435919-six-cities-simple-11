@@ -1,11 +1,17 @@
-import {MainPageArticle} from './main-page-article';
+import { MainPageArticle } from './main-page-article';
 import './main-page.css';
+import { PropertyOffer } from '../../types/property-offer';
+import { useState } from 'react';
+import { MainPageMap } from './map';
 
 type MainPageProps = {
   rentalOffers: number;
+  offers: PropertyOffer[];
 }
 
-function MainPage({ rentalOffers }: MainPageProps): JSX.Element {
+function MainPage(props: MainPageProps): JSX.Element {
+  const { rentalOffers, offers } = props;
+  const [activeId, setActiveId] = useState(0);
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -67,14 +73,23 @@ function MainPage({ rentalOffers }: MainPageProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <MainPageArticle />
-              <MainPageArticle />
-              <MainPageArticle />
-              <MainPageArticle />
+              {offers.map((offer) => {
+                return (
+                  <MainPageArticle
+                    key={offer.id}
+                    galleryUrl={offer.galleryUrl}
+                    title={offer.title}
+                    price={offer.price}
+                    rating={offer.rating}
+                    onHover={setActiveId}
+                    />
+                )
+              });
+             }
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <MainPageMap />
           </div>
         </div>
       </div>

@@ -1,9 +1,18 @@
 import './property.css';
 import {PropertyArticle} from './property-article';
+import { PropertyOffer } from '../../types/property-offer';
 
-function PropertyNotLogged(): JSX.Element {
+
+type PropertyNotLoggedProps = {
+  offers: PropertyOffer[];
+}
+
+
+function PropertyNotLogged(props: PropertyNotLoggedProps): JSX.Element {
+  const { offers } = props;
   return (
     <main className="page__main page__main--property">
+
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">
@@ -93,6 +102,7 @@ function PropertyNotLogged(): JSX.Element {
                   Fridge
                 </li>
               </ul>
+
             </div>
             <div className="property__host">
               <h2 className="property__host-title">Meet the host</h2>
@@ -145,15 +155,27 @@ function PropertyNotLogged(): JSX.Element {
             </section>
           </div>
         </div>
+
         <section className="property__map map"></section>
+
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            <PropertyArticle />
-            <PropertyArticle />
-            <PropertyArticle />
+          {offers.map((offer) => {
+                return (
+                  <PropertyArticle
+                    key={offer.id}
+                    galleryUrl={offer.galleryUrl}
+                    title={offer.title}
+                    price={offer.price}
+                    rating={offer.rating}
+                    features = {offer.price}
+                    />
+                )
+              });
+             }
           </div>
         </section>
       </div>
@@ -162,4 +184,3 @@ function PropertyNotLogged(): JSX.Element {
 }
 
 export default PropertyNotLogged;
-

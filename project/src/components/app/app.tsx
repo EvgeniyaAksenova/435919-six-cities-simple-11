@@ -9,10 +9,11 @@ import MainPage from '../../pages/main-page/main-page';
 import {PropertyPage} from '../../pages/property/property';
 import NotFoundScreen from '../../pages/not-found-element';
 
+
 type AppProps = {
   rentalOffers: number;
-  offers: PropertyOffer;
-  reviews: PropertyReview;
+  offers: PropertyOffer[];
+  reviews: PropertyReview[];
 }
 
 function App({ rentalOffers, offers, reviews }: AppProps): JSX.Element {
@@ -21,7 +22,7 @@ function App({ rentalOffers, offers, reviews }: AppProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage rentalOffers={rentalOffers} />}
+          element={<MainPage rentalOffers={rentalOffers} offers = {offers}/>}
         />
         <Route
           path={AppRoute.Login}
@@ -30,7 +31,7 @@ function App({ rentalOffers, offers, reviews }: AppProps): JSX.Element {
       </Routes>
       <Route
         path={AppRoute.Room}
-        element={<PropertyPage offers={offers} reviews = {reviews}/>}
+        element={<PropertyPage offer = {offers[0]} reviews = {reviews}/>}
       />
       <Route
         path="*"

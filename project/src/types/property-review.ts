@@ -4,5 +4,5 @@ export type PropertyReview= {
     userName: string;
     rating: string;
     textReview: string;
-    date: number;
+    dateTime: string;
   };
