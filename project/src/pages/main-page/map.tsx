@@ -1,4 +1,5 @@
 import { PropertyOffer } from '../../types/property-offer';
+import 'leaflet/dist/leaflet.css';
 
 type MainPageProps = {
   offers: PropertyOffer[];
