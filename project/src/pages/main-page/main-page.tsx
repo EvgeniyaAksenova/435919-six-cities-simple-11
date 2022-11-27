@@ -12,6 +12,7 @@ type MainPageProps = {
 function MainPage(props: MainPageProps): JSX.Element {
   const { rentalOffers, offers } = props;
   const [activeId, setActiveId] = useState(0);
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
