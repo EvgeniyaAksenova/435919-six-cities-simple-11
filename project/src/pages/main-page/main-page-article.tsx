@@ -2,8 +2,6 @@ import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
 import {Link} from 'react-router-dom';
 
-
-
 export type MainPageAerticleProps = {
   offer:PropertyOffer;
   onHover: (id: number) => void;
