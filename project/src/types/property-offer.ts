@@ -4,7 +4,7 @@ export type PropertyOffer= {
         latitude: number;
         longitude: number;
         zoom: number;
-      }
+      };
       name: string;
     };
     lat: number;

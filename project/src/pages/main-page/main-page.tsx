@@ -3,7 +3,6 @@ import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
 import { useState } from 'react';
 //import { MainPageMap } from './map';
-
 type MainPageProps = {
   rentalOffers: number;
   offers: PropertyOffer[];
