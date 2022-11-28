@@ -8,7 +8,7 @@ import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 
 
 type MapProps = {
-  offer: PropertyOffer;
+  points: PropertyOffer[],
 }
 
 export function MainPageMap(props: MapProps): JSX.Element {
@@ -32,8 +32,8 @@ export function MainPageMap(props: MapProps): JSX.Element {
       points.forEach((point) => {
         leaflet
           .marker({
-            lat: point.lat,
-            lng: point.lng,
+            lat: point.latitude,
+            lng: point.longitude,
           }, {
             icon: defaultCustomIcon,
           })
@@ -44,7 +44,6 @@ export function MainPageMap(props: MapProps): JSX.Element {
 
   return (
     <section className="cities__map map"
-    style={{height: '500px'}}
     ref={mapRef}
     >
     </section>);

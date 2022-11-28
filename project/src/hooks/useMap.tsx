@@ -3,7 +3,7 @@ import {Map, TileLayer} from 'leaflet';
 import { PropertyOffer } from '../types/property-offer';
 
 
-function useMap(mapRef, offer) {
+function useMap(mapRef: MutableRefObject, offer: PropertyOffer) {
   const [map, setMap] = useState(null);
   const isRenderedRef = useRef(false);
 
@@ -11,8 +11,8 @@ function useMap(mapRef, offer) {
     if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = leaflet.map(mapRef.current, {
         center: {
-          lat: offer.city.location.lat,
-          lng: offer.city.location.lng,
+          lat: offer.city.location.latitude,
+          lng: offer.city.location.longitude,
         },
         zoom: offer.city.location.zoom,
       });

@@ -4,15 +4,16 @@ import {Link} from 'react-router-dom';
 import { features } from 'process';
 
 
-export type PropertyOfferProps = {
+export type MainPageAerticleProps = {
   offer:PropertyOffer;
+  onHover: (id: number) => void;
 }
 
-export function MainPageArticle(props: PropertyOfferProps): JSX.Element {
-  const {offer} = props;
+export function MainPageArticle(props: MainPageAerticleProps): JSX.Element {
+  const {offer, onHover} = props;
   const {galleryUrl, title, price, features} = offer;
   return (
-    <article className="cities__card place-card" >
+    <article className="cities__card place-card" onMouseOver={() => onHover(offer.id)}>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`/Room/${offer.id}`}>
           <img className="place-card__image" src={galleryUrl} width="260" height="200" alt="Place image" />

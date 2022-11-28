@@ -6,7 +6,9 @@ export type PropertyOffer= {
         zoom: number
       }
       name: string
-    }
+    };
+    lat: number,
+    lng: number,
     id: number;
     galleryUrl: string;
     isPremium: boolean;
