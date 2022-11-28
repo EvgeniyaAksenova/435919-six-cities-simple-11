@@ -1,4 +1,4 @@
-import { PropertyOffer } from '../../types/property-offer';
+/*import { PropertyOffer } from '../../types/property-offer';
 import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import React, {useRef} from 'react';
@@ -32,8 +32,8 @@ export function MainPageMap(props: MapProps): JSX.Element {
       points.forEach((point) => {
         leaflet
           .marker({
-            lat: point.latitude,
-            lng: point.longitude,
+            lat: point.lat,
+            lng: point.lng,
           }, {
             icon: defaultCustomIcon,
           })
@@ -49,3 +49,4 @@ export function MainPageMap(props: MapProps): JSX.Element {
     </section>);
 }
 
+*/

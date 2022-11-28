@@ -2,7 +2,7 @@ import { MainPageArticle } from './main-page-article';
 import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
 import { useState } from 'react';
-import { MainPageMap } from './map';
+//import { MainPageMap } from './map';
 
 type MainPageProps = {
   rentalOffers: number;
@@ -93,7 +93,6 @@ function MainPage(props: MainPageProps): JSX.Element {
             </div>
           </section>
           <div className="cities__right-section">
-            <MainPageMap offers={offers}/>
           </div>
         </div>
       </div>
