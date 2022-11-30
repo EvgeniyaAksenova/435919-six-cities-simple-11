@@ -1,8 +1,6 @@
 import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
 import {Link} from 'react-router-dom';
-import { features } from 'process';
-
 
 export type MainPageAerticleProps = {
   offer:PropertyOffer;

@@ -4,11 +4,11 @@ export type PropertyOffer= {
         latitude: number;
         longitude: number;
         zoom: number;
-      }
-      name: string
+      };
+      name: string;
     };
-    lat: number,
-    lng: number,
+    lat: number;
+    lng: number;
     id: number;
     galleryUrl: string;
     isPremium: boolean;
