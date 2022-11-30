@@ -1,9 +1,10 @@
-/*import {useEffect, useState, MutableRefObject, useRef} from 'react';
-import {Map, TileLayer} from 'leaflet';
+import {useEffect, useState, MutableRefObject, useRef} from 'react';
+//import {Map, TileLayer} from 'leaflet';
+import leaflet from 'leaflet';
 import { PropertyOffer } from '../types/property-offer';
 
 
-function useMap(mapRef: MutableRefObject, offer: PropertyOffer) {
+function useMap(mapRef: MutableRefObject <HTMLElement | null> , offer: PropertyOffer[]) {
   const [map, setMap] = useState(null);
   const isRenderedRef = useRef(false);
 
@@ -35,5 +36,3 @@ function useMap(mapRef: MutableRefObject, offer: PropertyOffer) {
 }
 
 export default useMap;
-
-*/

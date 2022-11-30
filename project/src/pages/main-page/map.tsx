@@ -1,16 +1,17 @@
-/*import { PropertyOffer } from '../../types/property-offer';
+import { PropertyOffer } from '../../types/property-offer';
 import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import useMap from '../../hooks/useMap';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 
 type MapProps = {
-  points: PropertyOffer[],
+  points: PropertyOffer[];
+  activeId: number;
 }
 
 export function MainPageMap(props: MapProps): JSX.Element {
-  const mapRef = useRef(null);
+  const mapRef = useRef<HTMLElement|null>(null);
   const map = useMap(mapRef, props.points);
 
   const defaultCustomIcon = leaflet.icon({
@@ -33,9 +34,9 @@ export function MainPageMap(props: MapProps): JSX.Element {
             lat: point.lat,
             lng: point.lng,
           }, {
-           // icon: (point.title === selectedPoint.title)
-            ? currentCustomIcon
-            : defaultCustomIcon,
+            icon: (point.id === props.activeId)
+              ? currentCustomIcon
+              : defaultCustomIcon,
           })
           .addTo(map);
       });
@@ -44,7 +45,8 @@ export function MainPageMap(props: MapProps): JSX.Element {
 
   return (
     <section className="cities__map map"
-    ref={mapRef}
+      ref={mapRef}
     >
     </section>);
-}; */
+}
+

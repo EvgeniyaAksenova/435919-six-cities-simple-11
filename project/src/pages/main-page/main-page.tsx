@@ -2,7 +2,7 @@ import { MainPageArticle } from './main-page-article';
 import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
 import { useState } from 'react';
-//import { MainPageMap } from './map';
+import { MainPageMap } from './map';
 
 type MainPageProps = {
   rentalOffers: number;
@@ -11,7 +11,7 @@ type MainPageProps = {
 
 function MainPage(props: MainPageProps): JSX.Element {
   const { rentalOffers, offers } = props;
-  const [, setActiveId] = useState(0);
+  const [activeId, setActiveId] = useState(0);
   const articleHoverHandler = (id: number) => {
     setActiveId(id);
   };
@@ -90,6 +90,7 @@ function MainPage(props: MainPageProps): JSX.Element {
             </div>
           </section>
           <div className="cities__right-section">
+            <MainPageMap offers={offers} activeId={activeId} />
           </div>
         </div>
       </div>
