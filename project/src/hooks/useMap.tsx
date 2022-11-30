@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {useEffect, useState, MutableRefObject, useRef} from 'react';
 //import {Map, TileLayer} from 'leaflet';
 import leaflet from 'leaflet';
