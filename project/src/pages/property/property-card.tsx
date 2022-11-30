@@ -129,17 +129,16 @@ export function PropertyCard(props: PropertyOfferProps): JSX.Element {
 
           <section className="property__reviews reviews">
             <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-            {reviews.map((review) => {
-                return (
-                  <PropertyCardReview
-                  avatarUrl={review.avatarUrl}
-                  userName={review.userName}
-                  rating={review.rating}
-                  textReview={review.textReview}
-                  dateTime = {review.dateTime}
-                  key={review.id} />
-                )
-                })}
+            {reviews.map((review) => (
+              <PropertyCardReview
+                avatarUrl={review.avatarUrl}
+                userName={review.userName}
+                rating={review.rating}
+                textReview={review.textReview}
+                dateTime = {review.dateTime}
+                key={review.id}
+              />
+            ))}
             <PropertyForm />
           </section>
         </div>

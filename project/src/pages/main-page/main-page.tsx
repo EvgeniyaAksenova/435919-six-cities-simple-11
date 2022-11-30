@@ -14,7 +14,7 @@ function MainPage(props: MainPageProps): JSX.Element {
   const [, setActiveId] = useState(0);
   const articleHoverHandler = (id: number) => {
     setActiveId(id);
-  }
+  };
 
   return (
     <main className="page__main page__main--index">
@@ -77,18 +77,16 @@ function MainPage(props: MainPageProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {offers.map((offer) => {
-                return (
-                  <MainPageArticle
-                    key={offer.id}
-                    galleryUrl={offer.galleryUrl}
-                    title={offer.title}
-                    price={offer.price}
-                    rating={offer.rating}
-                    onHover={articleHoverHandler}
-                    />
-                )
-              })}
+              {offers.map((offer) => (
+                <MainPageArticle
+                  key={offer.id}
+                  galleryUrl={offer.galleryUrl}
+                  title={offer.title}
+                  price={offer.price}
+                  rating={offer.rating}
+                  onHover={articleHoverHandler}
+                />
+              ))}
             </div>
           </section>
           <div className="cities__right-section">
