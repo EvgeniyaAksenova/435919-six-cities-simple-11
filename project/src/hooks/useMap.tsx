@@ -35,4 +35,5 @@ function useMap(mapRef: MutableRefObject, offer: PropertyOffer) {
 }
 
 export default useMap;
+
 */

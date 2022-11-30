@@ -20,7 +20,7 @@ export function PropertyPage(props: PropertyOfferProps): JSX.Element {
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-          {offers.map((offer) => {
+          {props.offers.map((offer) => {
                 return (
                   <PropertyArticle
                     key={offer.id}

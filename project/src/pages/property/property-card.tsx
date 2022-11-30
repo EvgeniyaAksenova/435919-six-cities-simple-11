@@ -139,7 +139,7 @@ export function PropertyCard(props: PropertyOfferProps): JSX.Element {
                   dateTime = {review.dateTime}
                   key={review.id} />
                 )
-                });}
+                })}
             <PropertyForm />
           </section>
         </div>

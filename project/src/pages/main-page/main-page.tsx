@@ -11,7 +11,7 @@ type MainPageProps = {
 
 function MainPage(props: MainPageProps): JSX.Element {
   const { rentalOffers, offers } = props;
-  const [activeId, setActiveId] = useState(0);
+  const [, setActiveId] = useState(0);
   const articleHoverHandler = (id: number) => {
     setActiveId(id);
   }
@@ -88,8 +88,7 @@ function MainPage(props: MainPageProps): JSX.Element {
                     onHover={articleHoverHandler}
                     />
                 )
-              });
-             }
+              })}
             </div>
           </section>
           <div className="cities__right-section">

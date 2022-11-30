@@ -174,8 +174,7 @@ function PropertyNotLogged(props: PropertyNotLoggedProps): JSX.Element {
                     features = {offer.price}
                     />
                 )
-              });
-             }
+              })}
           </div>
         </section>
       </div>
