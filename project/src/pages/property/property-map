@@ -1,4 +1,4 @@
-/*import { PropertyOffer } from '../../types/property-offer';
+import { PropertyOffer } from '../../types/property-offer';
 import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import React, {useRef} from 'react';
