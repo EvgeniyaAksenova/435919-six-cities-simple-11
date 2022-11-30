@@ -1,23 +1,18 @@
-import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
-import {Link} from 'react-router-dom';
-import { features } from 'process';
 
-
-export type MainPageAerticleProps = {
-  offer:PropertyOffer;
-  onHover: (id: number) => void;
+export type PropertyOfferProps = {
+  offer: PropertyOffer;
 }
 
-export function MainPageArticle(props: MainPageAerticleProps): JSX.Element {
-  const {offer, onHover} = props;
-  const {galleryUrl, title, price, features} = offer;
+export function PropertyArticle(props: PropertyOfferProps): JSX.Element {
+  const { offer } = props;
+  const { galleryUrl, title, rating, price, features} = offer;
   return (
-    <article className="cities__card place-card" onMouseOver={() => onHover(offer.id)}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/Room/${offer.id}`}>
+    <article className="near-places__card place-card">
+      <div className="near-places__image-wrapper place-card__image-wrapper">
+        <a href="#">
           <img className="place-card__image" src={galleryUrl} width="260" height="200" alt="Place image" />
-        </Link>
+        </a>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -28,8 +23,8 @@ export function MainPageArticle(props: MainPageAerticleProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
-            <span> Rating</span>
+            <span style={{ width: '80%' }}></span>
+            <span className="visually-hidden">{rating} Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
@@ -39,3 +34,4 @@ export function MainPageArticle(props: MainPageAerticleProps): JSX.Element {
       </div>
     </article>);
 }
+

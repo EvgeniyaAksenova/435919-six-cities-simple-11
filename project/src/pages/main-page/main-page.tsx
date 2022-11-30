@@ -1,11 +1,21 @@
-import {MainPageArticle} from './main-page-article';
+import { MainPageArticle } from './main-page-article';
 import './main-page.css';
+import { PropertyOffer } from '../../types/property-offer';
+import { useState } from 'react';
+//import { MainPageMap } from './map';
 
 type MainPageProps = {
   rentalOffers: number;
+  offers: PropertyOffer[];
 }
 
-function MainPage({ rentalOffers }: MainPageProps): JSX.Element {
+function MainPage(props: MainPageProps): JSX.Element {
+  const { rentalOffers, offers } = props;
+  const [activeId, setActiveId] = useState(0);
+  const articleHoverHandler = (id: number) => {
+    setActiveId(id);
+  }
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -67,42 +77,22 @@ function MainPage({ rentalOffers }: MainPageProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <article className="cities__card place-card">
-                <div className="place-card__mark">
-                  <span>Premium</span>
-                </div>
-                <div className="cities__image-wrapper place-card__image-wrapper">
-                  <a href="#">
-                    <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
-                  </a>
-                </div>
-                <div className="place-card__info">
-                  <div className="place-card__price-wrapper">
-                    <div className="place-card__price">
-                      <b className="place-card__price-value">&euro;120</b>
-                      <span className="place-card__price-text">&#47;&nbsp;night</span>
-                    </div>
-
-                  </div>
-                  <div className="place-card__rating rating">
-                    <div className="place-card__stars rating__stars">
-                      <span style={{width: '80%'}}></span>
-                      <span className="visually-hidden">Rating</span>
-                    </div>
-                  </div>
-                  <h2 className="place-card__name">
-                    <a href="#">Beautiful &amp; luxurious apartment at great location</a>
-                  </h2>
-                  <p className="place-card__type">Apartment</p>
-                </div>
-              </article>
-              <MainPageArticle />
-              <MainPageArticle />
-              <MainPageArticle />
+              {offers.map((offer) => {
+                return (
+                  <MainPageArticle
+                    key={offer.id}
+                    galleryUrl={offer.galleryUrl}
+                    title={offer.title}
+                    price={offer.price}
+                    rating={offer.rating}
+                    onHover={articleHoverHandler}
+                    />
+                )
+              });
+             }
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
           </div>
         </div>
       </div>
