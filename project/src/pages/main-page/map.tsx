@@ -12,7 +12,7 @@ type MapProps = {
 
 export function MainPageMap(props: MapProps): JSX.Element {
   const mapRef = useRef<HTMLElement|null>(null);
-  const map = useMap(mapRef, props.points);
+  const map = useMap(mapRef, props.points[0]);
 
   const defaultCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_DEFAULT,

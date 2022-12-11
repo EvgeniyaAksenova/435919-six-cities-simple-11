@@ -3,31 +3,29 @@ import { PropertyCard } from './property-card';
 import { PropertyOffer } from '../../types/property-offer';
 import { PropertyReview }from '../../types/property-review';
 import { PropertyArticle } from './property-article';
+import { useParams } from 'react-router-dom';
 
 
 type PropertyOfferProps = {
-  offer: PropertyOffer;
   offers: PropertyOffer[];
   reviews: PropertyReview[];
 };
 
 export function PropertyPage(props: PropertyOfferProps): JSX.Element {
+  const params = useParams <{id:string}>();
 
+  const offer = props.offers.find((element) => element.id === Number(params.id));
   return (
     <main className="page__main page__main--property">
-      <PropertyCard offer={props.offer} reviews={props.reviews}/>
+      {offer ? <PropertyCard offer={offer} reviews={props.reviews}/> : null}
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            {props.offers.map((offer) => (
+            {props.offers.map((property) => (
               <PropertyArticle
-                key={offer.id}
-                galleryUrl={offer.galleryUrl}
-                title={offer.title}
-                price={offer.price}
-                rating={offer.rating}
-                features = {offer.price}
+                key={property.id}
+                offer = {property}
               />
             ))}
           </div>

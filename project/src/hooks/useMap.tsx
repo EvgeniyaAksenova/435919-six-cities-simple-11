@@ -6,8 +6,8 @@ import leaflet from 'leaflet';
 import { PropertyOffer } from '../types/property-offer';
 
 
-function useMap(mapRef: MutableRefObject <HTMLElement | null> , offer: PropertyOffer[]) {
-  const [map, setMap] = useState(null);
+function useMap(mapRef: MutableRefObject <HTMLElement | null> , offer: PropertyOffer) {
+  const [map, setMap] = useState <leaflet.Map | null>(null);
   const isRenderedRef = useRef(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function useMap(mapRef: MutableRefObject <HTMLElement | null> , offer: PropertyO
           lat: offer.city.location.latitude,
           lng: offer.city.location.longitude,
         },
-        zoom: offer.city.location.zoom,
+        zoom: 10,
       });
 
       leaflet
