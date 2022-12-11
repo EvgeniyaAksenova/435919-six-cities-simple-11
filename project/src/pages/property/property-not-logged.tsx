@@ -1,7 +1,7 @@
 import './property.css';
 import {PropertyArticle} from './property-article';
 import { PropertyOffer } from '../../types/property-offer';
-//import { PropertyMap } from 'property-map';
+import { PropertyMap } from './property-map';
 
 
 type PropertyNotLoggedProps = {
