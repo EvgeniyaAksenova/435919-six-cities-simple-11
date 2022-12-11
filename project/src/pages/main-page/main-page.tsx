@@ -1,17 +1,22 @@
 import { MainPageArticle } from './main-page-article';
 import './main-page.css';
-import { PropertyOffer } from '../../types/property-offer';
 import { useState } from 'react';
 import { MainPageMap } from './map';
+import { City } from '../../types/city';
+import { CitiesList } from './cities';
+import { useAppSelector } from '../../hooks';
+//import {getOffersAction} from '../../store/action';
+
 
 type MainPageProps = {
   rentalOffers: number;
-  offers: PropertyOffer[];
+  cities: City[];
 }
 
 function MainPage(props: MainPageProps): JSX.Element {
-  const { rentalOffers, offers } = props;
+  const { rentalOffers, cities } = props;
   const [activeId, setActiveId] = useState(0);
+  const {offers} = useAppSelector((state) => state);
   const articleHoverHandler = (id: number) => {
     setActiveId(id);
   };
@@ -21,39 +26,7 @@ function MainPage(props: MainPageProps): JSX.Element {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <CitiesList cities={cities} />
         </section>
       </div>
       <div className="cities">
@@ -80,17 +53,14 @@ function MainPage(props: MainPageProps): JSX.Element {
               {offers.map((offer) => (
                 <MainPageArticle
                   key={offer.id}
-                  galleryUrl={offer.galleryUrl}
-                  title={offer.title}
-                  price={offer.price}
-                  rating={offer.rating}
+                  offer={offer}
                   onHover={articleHoverHandler}
                 />
               ))}
             </div>
           </section>
           <div className="cities__right-section">
-            <MainPageMap offers={offers} activeId={activeId} />
+            <MainPageMap points={offers} activeId={activeId} />
           </div>
         </div>
       </div>

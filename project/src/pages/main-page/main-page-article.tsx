@@ -2,18 +2,18 @@ import './main-page.css';
 import { PropertyOffer } from '../../types/property-offer';
 import {Link} from 'react-router-dom';
 
-export type MainPageAerticleProps = {
+export type MainPageArticleProps = {
   offer:PropertyOffer;
   onHover: (id: number) => void;
 }
 
-export function MainPageArticle(props: MainPageAerticleProps): JSX.Element {
+export function MainPageArticle(props: MainPageArticleProps): JSX.Element {
   const {offer, onHover} = props;
   const {galleryUrl, title, price, features} = offer;
   return (
     <article className="cities__card place-card" onMouseOver={() => onHover(offer.id)}>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/Room/${offer.id}`}>
+        <Link to={`/offer/${offer.id}`}>
           <img className="place-card__image" src={galleryUrl} width="260" height="200" alt="Place image" />
         </Link>
       </div>

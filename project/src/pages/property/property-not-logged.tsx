@@ -1,12 +1,12 @@
 import './property.css';
 import {PropertyArticle} from './property-article';
 import { PropertyOffer } from '../../types/property-offer';
+//import { PropertyMap } from 'property-map';
 
 
 type PropertyNotLoggedProps = {
   offers: PropertyOffer[];
 }
-
 
 function PropertyNotLogged(props: PropertyNotLoggedProps): JSX.Element {
   const { offers } = props;
@@ -155,9 +155,7 @@ function PropertyNotLogged(props: PropertyNotLoggedProps): JSX.Element {
             </section>
           </div>
         </div>
-
-        <section className="property__map map"></section>
-
+        <PropertyMap offers={offers}/>
       </section>
       <div className="container">
         <section className="near-places places">

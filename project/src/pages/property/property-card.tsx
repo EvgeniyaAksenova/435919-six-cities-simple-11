@@ -2,6 +2,7 @@ import { PropertyForm } from './property-form';
 import { PropertyCardReview } from './property-review';
 import { PropertyOffer } from '../../types/property-offer';
 import { PropertyReview } from '../../types/property-review';
+import { PropertyMap } from './property-map';
 
 type ProperyImageProps = {
   galleryUrl: string;
@@ -131,11 +132,7 @@ export function PropertyCard(props: PropertyOfferProps): JSX.Element {
             <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
             {reviews.map((review) => (
               <PropertyCardReview
-                avatarUrl={review.avatarUrl}
-                userName={review.userName}
-                rating={review.rating}
-                textReview={review.textReview}
-                dateTime = {review.dateTime}
+                review = {review}
                 key={review.id}
               />
             ))}
@@ -143,7 +140,7 @@ export function PropertyCard(props: PropertyOfferProps): JSX.Element {
           </section>
         </div>
       </div>
-      <section className="property__map map"></section>
+      <PropertyMap points={[offer]}/>
     </section>
   );
 }
