@@ -7,7 +7,7 @@ import { getOffersAction, changeCityAction, sortPriceMinMax, sortPriceMaxMin, so
 type initialStateType = {
   city: City;
   offers: PropertyOffer[];
-  popularOffers: PropertyOffer[],
+  popularOffers: PropertyOffer[];
 }
 
 const initialState: initialStateType = {
@@ -27,16 +27,16 @@ const reducer = createReducer(initialState, (builder) => {
       state.offers = state.offers.filter((offer) => offer.city.name === action.payload.name);
     }))
     .addCase(sortPriceMinMax, ((state) => {
-      state.offers = state.offers.sort((a,b) => a.price-b.price)
+      state.offers = state.offers.sort((a,b) => a.price - b.price);
     }))
     .addCase(sortPriceMaxMin, ((state) => {
-      state.offers = state.offers.sort((a,b) => b.price-a.price)
+      state.offers = state.offers.sort((a,b) => b.price - a.price);
     }))
     .addCase(sortRatingMaxMin, ((state) => {
-      state.offers = state.offers.sort((a,b) => a.rating-b.rating)
+      state.offers = state.offers.sort((a,b) => a.rating - b.rating);
     }))
     .addCase(sortPopular, ((state) => {
-      state.offers =state.popularOffers.filter((offer) => offer.city.name === state.city.name)
-    }))
+      state.offers = state.popularOffers.filter((offer) => offer.city.name === state.city.name);
+    }));
 });
 export { reducer };
